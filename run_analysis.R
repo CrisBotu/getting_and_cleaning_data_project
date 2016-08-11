@@ -2,7 +2,7 @@ rm(list = ls())
 
 # 1. Download the dataset if doesn't exist in the WD
 
-setwd("D:/Documentos/Coursera/Data Science/3.Getting and Cleaning Data/Project")
+#setwd("D:/Documentos/Coursera/Data Science/3.Getting and Cleaning Data/Project")
 
 # Library
 
