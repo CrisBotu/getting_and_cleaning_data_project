@@ -29,15 +29,18 @@ if (!file.exists("UCI HAR Dataset")) {
 activityLabels  <- read.table("./UCI HAR Dataset/activity_labels.txt")
 features        <- read.table("./UCI HAR Dataset/features.txt")
 
-activityLabels[,2] <- as.character(activityLabels[,2])
-features[,2] <- as.character(features[,2])
-
 # 3. Extract the names, and cleaning data for mean and standard deviation
-extractFeatures       <- grep("mean|std",features[,2])
+extractFeatures       <- grep(".*mean.*|.*std.*",features[,2])
 extractFeatures.names <- features[extractFeatures,2]
 extractFeatures.names <- gsub("-mean","Mean",extractFeatures.names)
-extractFeatures.names <- gsub("-std","Std",extractFeatures.names)
+extractFeatures.names <- gsub("-std","Sd",extractFeatures.names)
 extractFeatures.names <- gsub("[-()]","",extractFeatures.names)
+extractFeatures.names <- gsub("^t", "time", extractFeatures.names)
+extractFeatures.names <- gsub("^f", "frequency", extractFeatures.names)
+extractFeatures.names <- gsub("Acc", "Accelerometer", extractFeatures.names)
+extractFeatures.names <- gsub("Gyro", "Gyroscope", extractFeatures.names)
+extractFeatures.names <- gsub("Mag", "Magnitude", extractFeatures.names)
+extractFeatures.names <- gsub("BodyBody", "Body", extractFeatures.names)
 
 # 4. Loads the activity and subject data for train and test sets
 train           <- read.table("./UCI HAR Dataset/train/X_train.txt")[extractFeatures] #Only the values for Mean|Std
