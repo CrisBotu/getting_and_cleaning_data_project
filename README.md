@@ -1,4 +1,4 @@
-# 3. Project of Getting and Cleaning Data - Data Scientist Course
+# Project of Getting and Cleaning Data - Data Scientist Course
 
 This is a script created for the project of Getting and Cleaning Data for the 3rd course of Data Scientist.
 The R script receives the name `run_analysis.R`, and does the following things:
