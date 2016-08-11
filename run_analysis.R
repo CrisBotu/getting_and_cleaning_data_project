@@ -4,8 +4,6 @@ rm(list = ls())
 
 #setwd("D:/Documentos/Coursera/Data Science/3.Getting and Cleaning Data/Project")
 
-# Library
-
 if (!require("data.table")) {
   install.packages("data.table")
 }
@@ -17,7 +15,7 @@ if (!require("reshape2")) {
 library(data.table)
 library(reshape2)
 
-filename <- "getdata_dataset.zip"
+filename <- "dataset.zip"
 
 if (!file.exists(filename)){
   fileURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
@@ -35,7 +33,7 @@ activityLabels[,2] <- as.character(activityLabels[,2])
 features[,2] <- as.character(features[,2])
 
 # 3. Extract the names, and cleaning data for mean and standard deviation
-extractFeatures       <- grep(".*mean.*|.*std.*",features[,2])
+extractFeatures       <- grep("mean|std",features[,2])
 extractFeatures.names <- features[extractFeatures,2]
 extractFeatures.names <- gsub("-mean","Mean",extractFeatures.names)
 extractFeatures.names <- gsub("-std","Std",extractFeatures.names)
